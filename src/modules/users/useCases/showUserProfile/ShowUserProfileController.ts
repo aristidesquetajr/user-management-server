@@ -13,7 +13,7 @@ class ShowUserProfileController {
 
       return response.json(user);
     } catch (err) {
-      return response.status(404).send(err.message);
+      return response.status(404).json({ error: err.message });
     }
   }
 }

@@ -13,7 +13,7 @@ class CreateUserController {
 
       return response.status(201).json(user);
     } catch (err) {
-      return response.status(400).send(err.message);
+      return response.status(400).json({ error: err.message });
     }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User Management",
+    "description": "Essa é a documentação de User Management",
+    "version": "1.0.0",
+    "contact": {
+      "email": "aristidesquetajr@gmail.com"
+    }
+  }
+}

@@ -16,7 +16,7 @@ class ListAllUsersUseCase {
     }
 
     if (!user.admin) {
-      throw new Error("Unatorized");
+      throw new Error("unauthorized");
     }
 
     const users = this.usersRepository.list();

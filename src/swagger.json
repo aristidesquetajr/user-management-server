@@ -16,7 +16,7 @@
         "requestBody": {
           "description": "Campos obrigatórios para criação de usuario.",
           "required": true,
-          "content": {            
+          "content": {
             "application/json": {
               "schema": {
                 "type": "object",
@@ -88,6 +88,93 @@
                   },
                   "example": {
                     "error": "This email is already in use."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["users"],
+        "summary": "Retorna todos os usuários",
+        "description": "Somente usuário `admin` pode acessar.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "admin": true,
+                      "id": "4e6a0f31-dafc-40b2-ad1e-d2ee19457e86",
+                      "name": "Rocketseat",
+                      "email": "oi@rocketseat.com.br",
+                      "created_at": "2023-07-23T18:26:28.634Z",
+                      "updated_at": "2023-07-23T18:26:28.634Z"
+                    },
+                    {
+                      "admin": false,
+                      "id": "d4dc31ee-35bb-47c9-965a-e655a7c0b724",
+                      "name": "Rocketseat",
+                      "email": "oi@rocketseat.com.br",
+                      "created_at": "2023-07-23T18:26:28.634Z",
+                      "updated_at": "2023-07-23T18:26:28.634Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Usuário sem permissão ou Usuário não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "error": "You need to be an administrator to list all users."
                   }
                 }
               }
